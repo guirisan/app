@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Planta;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,7 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $plantes = Planta::all();
-        return view('home',compact('plantes'));
+        return view('home');
     }
 }

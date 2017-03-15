@@ -2,13 +2,19 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-
 class Planta extends Model
 {
     public function user()
     {
-        return $this->belongsTo(User::Class);
+        return $this->belongsTo(User::class);
     }
-    
+
+    public function grup()
+    {
+        return $this->belongsTo(Grup::class);
+    }
+    public function familia()
+    {
+        return $this->belongsTo(Familia::class);
+    }
 }

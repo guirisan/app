@@ -14,7 +14,8 @@ class GrupController extends Controller
      */
     public function index()
     {
-        //
+        $grups = Grup::all();
+        return view('grup.index', compact('grups'));
     }
 
     /**

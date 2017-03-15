@@ -18,3 +18,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+
+//custom routes
+
+Route::get('/plantes', 'PlantaController@index');
+Route::get('/plantes/create/', 'PlantaController@create');
+Route::post('/plantes', 'PlantaController@store');
+Route::get('/plantes/{planta}/','PlantaController@show');
+
+Route::get('/grups', 'GrupController@index');
+
+Route::get('/families', 'FamiliaController@index');

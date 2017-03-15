@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Planta;
 use Illuminate\Http\Request;
+use App\Planta;
 
 class PlantaController extends Controller
 {
@@ -14,7 +14,8 @@ class PlantaController extends Controller
      */
     public function index()
     {
-        //
+        $plantes = Planta::all();
+        return view('planta.index',compact('plantes'));
     }
 
     /**
@@ -24,7 +25,7 @@ class PlantaController extends Controller
      */
     public function create()
     {
-        //
+        return view('planta.create');
     }
 
     /**
@@ -35,7 +36,8 @@ class PlantaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Planta::create(request()->all());
+        return redirect('/plantes');
     }
 
     /**
@@ -46,7 +48,7 @@ class PlantaController extends Controller
      */
     public function show(Planta $planta)
     {
-        //
+        return view('planta.show',compact('planta'));
     }
 
     /**

@@ -22,9 +22,13 @@
 </head>
 <body>
     <div id="app">
-        @include('layouts.nav')
+        <div class="container">
+            
+            @include('layouts.nav')
 
-        @yield('content')
+            @yield('content')
+            
+        </div>
     </div>
 
     <!-- Scripts -->
