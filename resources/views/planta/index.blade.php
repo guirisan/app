@@ -31,18 +31,44 @@
                         </div>
                       </div>
                     </div>
+
+
                     @if (count($plantes))
-                        <ul>
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th>nom</th>
+                              <th>nom_cientific</th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            
                             @foreach ($plantes as $planta)
-                                <li>
-                                    <a href="/plantes/{{ $planta->id }}">
-                                        {{ $planta->nom}} 
-                                    </a>
-                                 </li>
+                              <tr>
+                                <td>
+                                  <a href="/plantes/{{ $planta->id }}">
+                                      {{ $planta->nom}} 
+                                  </a>                                  
+                                </td>
+                                <td>
+                                  {{ $planta->nom_cientific }}
+                                </td>
+                                <td>
+                                  <a href="/plantes/{{ $planta->id }}/edit">
+                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                  </a>
+                                  <a href="/plantes/{{ $planta->id }}/" data-method="delete" data-confirm="Are you sure?">
+                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                  </a>
+                                </td>
+                              </tr>
                             @endforeach
-                        </ul>
+                          </tbody>
+                        </table>
+
                     @else
-                    <h3>No hi ha plantes creades</h3>
+                      <h3>No hi ha plantes creades</h3>
                     @endif
                 </div>
 

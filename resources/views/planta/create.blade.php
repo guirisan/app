@@ -8,8 +8,10 @@
             <div class="panel-heading"> <strong>Afegir planta</strong> </div>
 
             <div class="panel-body">
-              <form action="/plantes" method="POST" role="form">
+              <form action="/plantes" method="POST" role="form" enctype="multipart/form-data">
                 @include('planta.inputs')
+
+                
                 <button type="submit" class="btn btn-primary">Guardar</button>
             </div>
 

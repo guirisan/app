@@ -976,6 +976,8 @@ var app = new Vue({
   el: '#app'
 });
 
+__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./laraveldelete.js\""); e.code = 'MODULE_NOT_FOUND';; throw e; }()));
+
 /***/ }),
 /* 10 */
 /***/ (function(module, exports) {

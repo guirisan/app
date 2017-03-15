@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use App\Planta;
 
 class PlantaController extends Controller
@@ -36,6 +37,11 @@ class PlantaController extends Controller
      */
     public function store(Request $request)
     {
+        //to-do VALIDATION
+        // dd($request->input('file')->conten);
+        // dd($request->hasFile('file'));
+        // dd($request->file);
+        $path = $request->file->store('/public/storage');
         Planta::create(request()->all());
         return redirect('/plantes');
     }
@@ -59,7 +65,7 @@ class PlantaController extends Controller
      */
     public function edit(Planta $planta)
     {
-        //
+        return view('planta.edit',compact('planta'));
     }
 
     /**

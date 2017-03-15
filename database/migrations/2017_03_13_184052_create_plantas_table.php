@@ -23,9 +23,10 @@ class CreatePlantasTable extends Migration
             $table->text('sembra')->nullable();
             $table->text('cultiu')->nullable();
             $table->text('collita')->nullable();
-            $table->integer('user_id');
+            $table->integer('user_id')->default(1);
             $table->integer('grup_id')->nullable();
             $table->integer('familia_id')->nullable();
+            $table->string('file')->nullable();
             $table->timestamps();
         });
     }

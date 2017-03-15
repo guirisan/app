@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', 'HomeController@index');
 
 Auth::routes();
 
@@ -25,7 +27,8 @@ Route::get('/home', 'HomeController@index');
 Route::get('/plantes', 'PlantaController@index');
 Route::get('/plantes/create/', 'PlantaController@create');
 Route::post('/plantes', 'PlantaController@store');
-Route::get('/plantes/{planta}/','PlantaController@show');
+Route::get('/plantes/{planta}/edit', 'PlantaController@edit');
+Route::get('/plantes/{planta}/', 'PlantaController@show');
 
 Route::get('/grups', 'GrupController@index');
 
