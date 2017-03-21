@@ -13,8 +13,9 @@ class CreatePlantasTable extends Migration
      */
     public function up()
     {
-        Schema::create('plantas', function (Blueprint $table) {
+        Schema::create('plantes', function (Blueprint $table) {
             $table->increments('id');
+            $table->timestamps();
             $table->string('nom');
             $table->string('nom_cientific')->nullable();
             $table->text('descripcio')->nullable();
@@ -26,8 +27,6 @@ class CreatePlantasTable extends Migration
             $table->integer('user_id')->default(1);
             $table->integer('grup_id')->nullable();
             $table->integer('familia_id')->nullable();
-            $table->string('file')->nullable();
-            $table->timestamps();
         });
     }
 

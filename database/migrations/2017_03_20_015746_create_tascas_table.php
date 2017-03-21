@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFamiliasTable extends Migration
+class CreateTascasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,9 @@ class CreateFamiliasTable extends Migration
      */
     public function up()
     {
-        Schema::create('families', function (Blueprint $table) {
+        Schema::create('tasques', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('nom');
-            $table->string('nom_altres')->nullable();
-            $table->text('descripcio')->nullable();
-            $table->integer('user_id');
-
         });
     }
 
@@ -31,6 +26,6 @@ class CreateFamiliasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('familias');
+        Schema::dropIfExists('tascas');
     }
 }

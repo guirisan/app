@@ -36,7 +36,6 @@ $factory->define(App\Planta::class, function(Faker\Generator $faker){
         'grup_id' => $faker->numberBetween(1,4),
         'familia_id' => $faker->numberBetween(1,4),
         'user_id' => 1,
-        'file'=> $faker->imageUrl,
     ];
 });
 

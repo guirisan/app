@@ -37,12 +37,20 @@
               <p>
                 <strong>user_id:</strong> {{ $planta->user_id}} 
               </p>
+
               <p>
                 <strong>grup:</strong> {{ $planta->grup->nom}} 
               </p>
+
               <p>
                 <strong>familia:</strong> {{ $planta->familia->nom}}
               </p>
+              
+              @if (count($planta->images))
+                <p> 
+                  <strong>foto:</strong> <img src="{{ $planta->images->first()->url }}">
+                </p>
+              @endif 
 
             </div>
 

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use App\Planta;
+use App\Image;
+use App\Http\Requests\PlantaRequest;
 
 class PlantaController extends Controller
 {
@@ -16,7 +18,7 @@ class PlantaController extends Controller
     public function index()
     {
         $plantes = Planta::all();
-        return view('planta.index',compact('plantes'));
+        return view('planta.index', compact('plantes'));
     }
 
     /**
@@ -26,23 +28,49 @@ class PlantaController extends Controller
      */
     public function create()
     {
-        return view('planta.create');
+        $planta = new Planta;
+        return view('planta.create', compact('planta'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request //TODO update
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PlantaRequest $request)
     {
-        //to-do VALIDATION
-        // dd($request->input('file')->conten);
-        // dd($request->hasFile('file'));
-        // dd($request->file);
-        $path = $request->file->store('/public/storage');
-        Planta::create(request()->all());
+        //to-do VALIDATION  -------- DONE IN PlantaRequest 
+        
+        $planta = Planta::create(request([
+            'nom',
+            'nom_cientific',
+            'descripcio',
+            'sembra_ini',
+            'sembra_fi',
+            'sembra',
+            'cultiu',
+            'collita',
+            'user_id',
+            'grup_id',
+            'familia_id'
+        ]));
+        
+        if ($request->file('image'))
+        {
+            $path = $request->file('image')->storeAs('public', $request['nom'] . ".jpg");
+
+            $image = Image::create([
+                'nom' => $planta->nom,
+                'descripcio' => $request->image_descripcio,
+                'user_id' => 1,
+                'url' => '\/storage/' . $request['nom'] . '.jpg',
+                'owner_id' => $planta->id,
+                'owner_type' => 'App\Planta'
+            ]);
+        }    
+
+
         return redirect('/plantes');
     }
 
@@ -54,7 +82,7 @@ class PlantaController extends Controller
      */
     public function show(Planta $planta)
     {
-        return view('planta.show',compact('planta'));
+        return view('planta.show', compact('planta'));
     }
 
     /**
@@ -65,19 +93,33 @@ class PlantaController extends Controller
      */
     public function edit(Planta $planta)
     {
-        return view('planta.edit',compact('planta'));
+        return view('planta.edit', compact('planta'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request NOT****************
      * @param  \App\Planta  $planta
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Planta $planta)
+    public function update(PlantaRequest $request, Planta $planta)
     {
-        //
+        $planta['nom']->$request['nom'];
+        $planta['nom_cientific']->$request['nom_cientific'];
+        $planta['descripcio']->$request['descripcio'];
+        $planta['sembra_ini']->$request['sembra_ini'];
+        $planta['sembra_fi']->$request['sembra_fi'];
+        $planta['sembra']->$request['sembra'];
+        $planta['cultiu']->$request['cultiu'];
+        $planta['collita']->$request['collita'];
+        $planta['user_id']->$request['user_id'];
+        $planta['grup_id']->$request['grup_id'];
+        $planta['familia_id']->$request['familia_id'];
+
+        $planta->save();
+
+        return view('planta.show',compact('planta'));
     }
 
     /**
