@@ -19,8 +19,9 @@ class CreatePlantasTable extends Migration
             $table->string('nom');
             $table->string('nom_cientific')->nullable();
             $table->text('descripcio')->nullable();
-            $table->date('sembra_ini')->nullable();
-            $table->date('sembra_fi')->nullable();
+            $table->date('sembra_ini')->nullable();         // només interesa DD/MM
+            $table->date('sembra_fi')->nullable();          // només interesa DD/MM
+            $table->integer('dies')->nullable();            //duracio del cultiu en dies
             $table->text('sembra')->nullable();
             $table->text('cultiu')->nullable();
             $table->text('collita')->nullable();

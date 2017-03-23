@@ -8,6 +8,17 @@ use Illuminate\Http\Request;
 class GrupController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -25,7 +36,8 @@ class GrupController extends Controller
      */
     public function create()
     {
-        //
+        $grup = new Grup;
+        return view('grup.create', compact('grup'));
     }
 
     /**

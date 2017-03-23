@@ -28,8 +28,7 @@ class PlantaController extends Controller
      */
     public function create()
     {
-        $planta = new Planta;
-        return view('planta.create', compact('planta'));
+        return view('planta.create');
     }
 
     /**
@@ -40,8 +39,7 @@ class PlantaController extends Controller
      */
     public function store(PlantaRequest $request)
     {
-        //to-do VALIDATION  -------- DONE IN PlantaRequest 
-        
+       
         $planta = Planta::create(request([
             'nom',
             'nom_cientific',
