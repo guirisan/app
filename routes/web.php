@@ -32,7 +32,13 @@ Route::resource('families', 'FamiliaController', ['parameters' => [
     'families' => 'familia'
 ]]);
 
+Route::resource('plagues', 'PlagaController', ['parameters' => [
+    'plagues' => 'plaga'
+]]);
 
+Route::resource('remei', 'RemeiController', ['parameters' => [
+    'remei' => 'Remei'
+]]);
 // // Route::get('/plantes', 'PlantaController@index');
 // Route::get('/plantes', 'PlantaController@index');
 // Route::get('/plantes/create/', 'PlantaController@create');

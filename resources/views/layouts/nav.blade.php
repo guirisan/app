@@ -14,7 +14,7 @@
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'Laravel') }}
-                / <span>contras</span>
+                / <span>admins</span>
             </a>
         </div>
 

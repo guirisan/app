@@ -36,4 +36,11 @@ class Planta extends Model
     {
         return $this->belongsTo(Familia::class);
     }
+
+    public function plagues()
+    {
+        return $this->hasMany(Plaga::class)
+    }
+    
+
 }
