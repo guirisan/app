@@ -7,7 +7,7 @@
             <div class="panel-heading"> <strong>Editar {{ $planta->nom }} </strong> </div>
 
             <div class="panel-body">
-                {!! Form::model($planta, ['method' => 'POST', 'route' => ['plantes', $planta] ]) !!}
+                {!! Form::model($planta, ['method' => 'PUT', 'route' => ['plantes.edit', $planta] ]) !!}
                 
                 <div class="form-group{{ $errors->has('user_id') ? ' has-error' : '' }}">
                     {!! Form::label('user_id', 'user_id') !!}

@@ -11,13 +11,21 @@ use App\Http\Requests\PlantaRequest;
 class PlantaController extends Controller
 {
     /**
+     * Requires user to be autenticated to call this controller.
+     */    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $plantes = Planta::all();
+        $plantes = auth()->user()->plantes;
         return view('planta.index', compact('plantes'));
     }
 
@@ -39,7 +47,6 @@ class PlantaController extends Controller
      */
     public function store(PlantaRequest $request)
     {
-       
         $planta = Planta::create(request([
             'nom',
             'nom_cientific',
@@ -54,8 +61,7 @@ class PlantaController extends Controller
             'familia_id'
         ]));
         
-        if ($request->file('image'))
-        {
+        if ($request->file('image')) {
             $path = $request->file('image')->storeAs('public', $request['nom'] . ".jpg");
 
             $image = Image::create([
@@ -66,7 +72,7 @@ class PlantaController extends Controller
                 'owner_id' => $planta->id,
                 'owner_type' => 'App\Planta'
             ]);
-        }    
+        }
 
 
         return redirect('/plantes');
@@ -117,7 +123,7 @@ class PlantaController extends Controller
 
         $planta->save();
 
-        return view('planta.show',compact('planta'));
+        return view('planta.show', compact('planta'));
     }
 
     /**

@@ -37,7 +37,7 @@ Route::resource('plagues', 'PlagaController', ['parameters' => [
 ]]);
 
 Route::resource('remei', 'RemeiController', ['parameters' => [
-    'remei' => 'Remei'
+    'remei' => 'remei'
 ]]);
 // // Route::get('/plantes', 'PlantaController@index');
 // Route::get('/plantes', 'PlantaController@index');

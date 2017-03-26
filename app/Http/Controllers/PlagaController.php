@@ -15,7 +15,7 @@ class PlagaController extends Controller
     public function index()
     {
         $plagues = Plaga::all();
-        $return view('plaga.index',compact('plagues'));
+        return view('plaga.index',compact('plagues'));
     }
 
     /**

@@ -39,7 +39,7 @@ class Planta extends Model
 
     public function plagues()
     {
-        return $this->hasMany(Plaga::class)
+        return $this->hasMany(Plaga::class);
     }
     
 
