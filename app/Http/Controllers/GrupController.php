@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Grup;
+use App\Http\Requests\GrupRequest;
 use Illuminate\Http\Request;
 
 class GrupController extends Controller
@@ -25,7 +26,7 @@ class GrupController extends Controller
      */
     public function index()
     {
-        $grups = Grup::all();
+        $grups = auth()->user()->grups;
         return view('grup.index', compact('grups'));
     }
 
@@ -36,8 +37,7 @@ class GrupController extends Controller
      */
     public function create()
     {
-        $grup = new Grup;
-        return view('grup.create', compact('grup'));
+        return view('grup.create');
     }
 
     /**
@@ -46,9 +46,16 @@ class GrupController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GrupRequest $request)
     {
-        //
+        $grup = Grup::create(request([
+            'nom',
+            'nom_altres',
+            'descripcio',
+            'user_id'
+        ]));
+
+        return redirect('/grups');
     }
 
     /**
@@ -59,7 +66,7 @@ class GrupController extends Controller
      */
     public function show(Grup $grup)
     {
-        //
+        return view('grup.show', compact('grup'));
     }
 
     /**
@@ -68,9 +75,9 @@ class GrupController extends Controller
      * @param  \App\Grup  $grup
      * @return \Illuminate\Http\Response
      */
-    public function edit(Grup $grup)
+    public function edit(Grup $grup) 
     {
-        //
+        return view('grup.edit',compact('grup'));
     }
 
     /**
@@ -80,9 +87,15 @@ class GrupController extends Controller
      * @param  \App\Grup  $grup
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Grup $grup)
+    public function update(GrupRequest $request, Grup $grup)
     {
-        //
+        $grup['nom'] = $request['nom'];
+        $grup['nom_altres'] = $request['nom_altres'];
+        $grup['descripcio'] = $request['descripcio'];
+
+        $grup->save();
+
+        return view('grup.show', compact('grup'));
     }
 
     /**
@@ -93,6 +106,7 @@ class GrupController extends Controller
      */
     public function destroy(Grup $grup)
     {
-        //
+        Grup::destroy($grup->id);
+        return redirect('/grups');
     }
 }

@@ -9,20 +9,44 @@
 
                 <div class="panel-body">
                     @if (count($families))
-                        <ul>
-                            @foreach ($families as $familia)
-                                <li>
-{{--                                     {{ $familia->nom}} - {{ $familia->sembra_ini->format('j - F')}}
- --}}
-                                    {{ $familia->nom}}
-
-
-                                 </li>
-                            @endforeach
-                        </ul>
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th>nom</th>
+                              <th>nom_altres</th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                                
+                          @foreach ($families as $familia)
+                              <tr>
+                                <td>
+                                  <a href="/families/{{ $familia->id }}">
+                                      {{ $familia->nom}} 
+                                  </a>                                  
+                                </td>
+                                <td>
+                                  {{ $familia->nom_altres }}
+                                </td>
+                                <td>
+                                  <a href="/families/{{ $familia->id }}/edit">
+                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                  </a>
+                                  {{ Form::open(['method' => 'DELETE', 'route' => ['families.destroy', $familia->id]]) }}
+                                        {{ Form::submit('Delete', ['class' => 'btn btn-warning']) }}
+                                  {{ Form::close() }}
+                                </td>
+                              </tr>
+                          @endforeach
+                        </tbody>
+                      </table>
                     @else
                     <h3>No hi ha families creades</h3>
                     @endif
+                    <a class="btn btn-primary" href="/families/create/">
+                      Afegir familia
+                    </a>
                 </div>
 
 

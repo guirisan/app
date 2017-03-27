@@ -31,4 +31,39 @@ class User extends Authenticatable
     {
         return $this->hasMany(Planta::class);
     }
+
+    public function grups()
+    {
+        return $this->hasMany(Grup::class);
+    }
+
+    public function families()
+    {
+        return $this->hasMany(Familia::class);
+    }
+
+    public function plagues()
+    {
+        return $this->hasMany(Plaga::class);
+    }
+
+    public function remeis()
+    {
+        return $this->hasMany(Remei::class);
+    }
+
+    public function bancals()
+    {
+        return $this->hasMany(Bancal::class);
+    }
+
+    public function parceles()
+    {
+        return $this->hasMany(Parcela::class);
+    }
+
+    public function cultius()
+    {
+        return $this->hasMany(Cultiu::class);
+    }
 }

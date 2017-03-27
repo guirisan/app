@@ -3,10 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Familia;
+use App\Http\Requests\FamiliaRequest;
 use Illuminate\Http\Request;
 
 class FamiliaController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +26,7 @@ class FamiliaController extends Controller
      */
     public function index()
     {
-        $families = Familia::all();
+        $families = auth()->user()->families;
         return view('familia.index', compact('families'));
     }
 
@@ -25,7 +37,7 @@ class FamiliaController extends Controller
      */
     public function create()
     {
-        //
+        return view('familia.create');
     }
 
     /**
@@ -34,9 +46,16 @@ class FamiliaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FamiliaRequest $request)
     {
-        //
+        $familia = Familia::create(request([
+            'nom',
+            'nom_altres',
+            'descripcio',
+            'user_id'
+        ]));
+
+        return redirect('/families');
     }
 
     /**
@@ -47,7 +66,7 @@ class FamiliaController extends Controller
      */
     public function show(Familia $familia)
     {
-        //
+        return view('familia.show', compact('familia'));
     }
 
     /**
@@ -58,7 +77,7 @@ class FamiliaController extends Controller
      */
     public function edit(Familia $familia)
     {
-        //
+        return view('familia.edit', compact('familia'));
     }
 
     /**
@@ -68,9 +87,15 @@ class FamiliaController extends Controller
      * @param  \App\Familia  $familia
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Familia $familia)
+    public function update(FamiliaRequest $request, Familia $familia)
     {
-        //
+        $familia['nom'] = $request['nom'];
+        $familia['nom_altres'] = $request['nom_altres'];
+        $familia['descripcio'] = $request['descripcio'];
+
+        $familia->save();
+
+        return view('familia.show', compact('familia'));
     }
 
     /**
@@ -81,6 +106,7 @@ class FamiliaController extends Controller
      */
     public function destroy(Familia $familia)
     {
-        //
+        Familia::destroy($familia->id);
+        return redirect('/families');
     }
 }

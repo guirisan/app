@@ -34,9 +34,9 @@
                                   <a href="/plantes/{{ $planta->id }}/edit">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                   </a>
-                                  <a href="/plantes/{{ $planta->id }}/" data-method="delete" data-confirm="Are you sure?">
-                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                                  </a>
+                                  {{ Form::open(['method' => 'DELETE', 'route' => ['plantes.destroy', $planta->id]]) }}
+                                        {{ Form::submit('Delete', ['class' => 'btn btn-warning']) }}
+                                  {{ Form::close() }}
                                 </td>
                               </tr>
                             @endforeach

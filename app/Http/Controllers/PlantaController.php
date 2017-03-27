@@ -60,7 +60,7 @@ class PlantaController extends Controller
             'grup_id',
             'familia_id'
         ]));
-        
+        /*
         if ($request->file('image')) {
             $path = $request->file('image')->storeAs('public', $request['nom'] . ".jpg");
 
@@ -73,6 +73,7 @@ class PlantaController extends Controller
                 'owner_type' => 'App\Planta'
             ]);
         }
+        */
 
 
         return redirect('/plantes');
@@ -109,17 +110,16 @@ class PlantaController extends Controller
      */
     public function update(PlantaRequest $request, Planta $planta)
     {
-        $planta['nom']->$request['nom'];
-        $planta['nom_cientific']->$request['nom_cientific'];
-        $planta['descripcio']->$request['descripcio'];
-        $planta['sembra_ini']->$request['sembra_ini'];
-        $planta['sembra_fi']->$request['sembra_fi'];
-        $planta['sembra']->$request['sembra'];
-        $planta['cultiu']->$request['cultiu'];
-        $planta['collita']->$request['collita'];
-        $planta['user_id']->$request['user_id'];
-        $planta['grup_id']->$request['grup_id'];
-        $planta['familia_id']->$request['familia_id'];
+        $planta['nom'] = $request['nom'];
+        $planta['nom_cientific'] = $request['nom_cientific'];
+        $planta['descripcio'] = $request['descripcio'];
+        $planta['sembra_ini'] = $request['sembra_ini'];
+        $planta['sembra_fi'] = $request['sembra_fi'];
+        $planta['sembra'] = $request['sembra'];
+        $planta['cultiu'] = $request['cultiu'];
+        $planta['collita'] = $request['collita'];
+        $planta['grup_id'] = $request['grup_id'];
+        $planta['familia_id'] = $request['familia_id'];
 
         $planta->save();
 
@@ -134,6 +134,7 @@ class PlantaController extends Controller
      */
     public function destroy(Planta $planta)
     {
-        //
+        Planta::destroy($planta->id);
+        return redirect('/plantes');
     }
 }

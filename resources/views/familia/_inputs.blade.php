@@ -1,4 +1,6 @@
-{{ csrf_field() }}
+<div class="form-group{{ $errors->has('user_id') ? ' has-error' : '' }}">
+    {!! Form::text('user_id', auth()->user()->id, ['class' => 'form-control', 'required' => 'required']) !!}
+</div>
 
 <div class="form-group{{ $errors->has('nom') ? ' has-error' : '' }}">
     {!! Form::label('nom', 'Nom') !!}

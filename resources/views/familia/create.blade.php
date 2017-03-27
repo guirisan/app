@@ -4,17 +4,17 @@
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
         <div class="panel panel-default">
-            <div class="panel-heading"> <strong>Afegir grup</strong> </div>
+            <div class="panel-heading"> <strong>Afegir familia</strong> </div>
 
             <div class="panel-body">
 
-            {!! Form::model(new App\Grup, ['method' => 'POST', 'route' => 'grups.store']) !!}
+            {!! Form::model(new App\Familia, ['method' => 'POST', 'route' => 'families.store']) !!}
                 
-                @include('grup._inputs')
+                @include('familia._inputs')
                 
             {!! Form::close() !!}
 
-                {{-- <form action="/grups" method="POST" role="form" enctype="multipart/form-data">
+                {{-- <form action="/familias" method="POST" role="form" enctype="multipart/form-data">
                     
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </form> --}}

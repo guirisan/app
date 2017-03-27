@@ -24,7 +24,7 @@
     <div id="app">
         <div class="container">
             
-            @include('layouts.nav')
+            @include('layouts._nav')
 
             @yield('content')
             
