@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePlagasTable extends Migration
+class CreateCultiusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,15 @@ class CreatePlagasTable extends Migration
      */
     public function up()
     {
-        Schema::create('plagues', function (Blueprint $table) {
+        Schema::create('cultius', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->integer('user_id');
-            $table->string('nom');
-            $table->string('nom_cientific')->nullable();
+            $table->integer('planta_id');
+            $table->date('data_ini');
+            $table->date('data_fi');
             $table->text('descripcio')->nullable();
-            $table->text('tractament')->nullable();
-
         });
-
-        
     }
 
     /**
@@ -34,6 +31,6 @@ class CreatePlagasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('plagues');
+        Schema::dropIfExists('cultius');
     }
 }

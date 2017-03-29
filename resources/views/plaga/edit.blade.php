@@ -8,9 +8,7 @@
 
             <div class="panel-body">
                 {!! Form::model($planta, ['method' => 'PATCH', 'route' => ['plantes.update', $planta->id] ]) !!}
-                    @include('planta._inputs', 
-                        ['submitButtonText' => 'Editar planta'],
-                        ['resetButtonText' => 'Desfer canvis'])
+                    @include('planta._inputs')
                 {!! Form::close() !!}
 
                 </div>

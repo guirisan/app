@@ -12,15 +12,15 @@ class Planta extends Model
      * @var string
      */
     protected $table = 'plantes';
-    
+        
     public function images()
     {
-        return $this->morphMany('App\Image', 'owner');
+        return $this->morphMany('App\Image', 'imageable');
     }
-
+    
     public function tasques()
     {
-        return $this->morphMany('App\Tasca', 'owner');
+        return $this->morphMany('App\Tasca', 'tasqueable');
     }
 
     public function user()
@@ -39,7 +39,7 @@ class Planta extends Model
 
     public function plagues()
     {
-        return $this->hasMany(Plaga::class);
+        return $this->belongsToMany(Plaga::class);
     }
     
 

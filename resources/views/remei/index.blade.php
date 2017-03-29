@@ -5,11 +5,11 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
-                <div class="panel-heading">Plantes</div>
+                <div class="panel-heading">Remeis</div>
 
                 <div class="panel-body">
 
-                    @if (count($plantes))
+                    @if (count($remeis))
                         <table class="table table-hover">
                           <thead>
                             <tr>
@@ -20,22 +20,22 @@
                           </thead>
                           <tbody>
                             
-                            @foreach ($plantes as $planta)
+                            @foreach ($remeis as $remei)
                               <tr>
                                 <td>
-                                  <a href="/plantes/{{ $planta->id }}">
-                                      {{ $planta->nom}} 
+                                  <a href="/remeis/{{ $remei->id }}">
+                                      {{ $remei->nom}} 
                                   </a>                                  
                                 </td>
                                 <td>
-                                  {{ $planta->nom_cientific }}
+                                  {{ $remei->nom_cientific }}
                                 </td>
                                 <td>
-                                  <a href="/plantes/{{ $planta->id }}/edit">
+                                  <a href="/remeis/{{ $remei->id }}/edit">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                   </a>
-                                  {{ Form::open(['method' => 'DELETE', 'route' => ['plantes.destroy', $planta->id]]) }}
-                                        {{ Form::button('<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>', ['class' => 'btn-link', 'type' => 'submit']) }}
+                                  {{ Form::open(['method' => 'DELETE', 'route' => ['remeis.destroy', $remei->id]]) }}
+                                        {{ Form::submit('Delete', ['class' => 'btn btn-warning']) }}
                                   {{ Form::close() }}
                                 </td>
                               </tr>
@@ -44,10 +44,10 @@
                         </table>
 
                     @else
-                      <h3>No hi ha plantes creades</h3>
+                      <h3>No hi ha remeis creats</h3>
                     @endif
-                    <a class="btn btn-primary" href="/plantes/create/">
-                      Afegir planta
+                    <a class="btn btn-primary" href="/remeis/create/">
+                      Afegir remei
                     </a>
 
                 </div>

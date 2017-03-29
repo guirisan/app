@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RemeiRequest;
 use App\Remei;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class RemeiController extends Controller
      */
     public function index()
     {
-        //
+        $remeis = auth()->user()->remeis;
+        return view('remei.index',compact('remeis'));
     }
 
     /**
@@ -24,7 +26,7 @@ class RemeiController extends Controller
      */
     public function create()
     {
-        //
+        return view('remei.create');
     }
 
     /**
@@ -33,9 +35,19 @@ class RemeiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RemeiRequest $request)
     {
-        //
+        $remei = Remei::create(request([
+            'user_id',
+            'nom',
+            'nom_cientific',
+            'descripcio',
+            'preparacio',
+            'aplicacio',
+        ]));
+
+        return redirect('/remeis');
+
     }
 
     /**
@@ -46,7 +58,7 @@ class RemeiController extends Controller
      */
     public function show(Remei $remei)
     {
-        //
+        return view('remei.show',compact('remei'));
     }
 
     /**
@@ -57,7 +69,7 @@ class RemeiController extends Controller
      */
     public function edit(Remei $remei)
     {
-        //
+        return view('remei.edit', compact('remei'));
     }
 
     /**
@@ -67,9 +79,18 @@ class RemeiController extends Controller
      * @param  \App\Remei  $remei
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Remei $remei)
+    public function update(RemeiRequest $request, Remei $remei)
     {
-        //
+        $remei['nom'] = $request['nom'];
+        $remei['nom_cientific'] = $request['nom_cientific'];
+        $remei['descripcio'] = $request['descripcio'];
+        $remei['preparacio'] = $request['preparacio'];
+        $remei['aplicacio'] = $request['aplicacio'];
+
+        $remei->save();
+
+        return view('remei.show', compact('remei'));
+
     }
 
     /**
@@ -80,6 +101,7 @@ class RemeiController extends Controller
      */
     public function destroy(Remei $remei)
     {
-        //
+        Remei::destroy($remei->id);
+        return redirect('/remeis');
     }
 }

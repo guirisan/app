@@ -16,6 +16,7 @@ class CreatePlantasTable extends Migration
         Schema::create('plantes', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->integer('user_id');            
             $table->string('nom');
             $table->string('nom_cientific')->nullable();
             $table->text('descripcio')->nullable();
@@ -25,7 +26,6 @@ class CreatePlantasTable extends Migration
             $table->text('sembra')->nullable();
             $table->text('cultiu')->nullable();
             $table->text('collita')->nullable();
-            $table->integer('user_id');
             $table->integer('grup_id')->nullable();
             $table->integer('familia_id')->nullable();
         });
@@ -38,6 +38,6 @@ class CreatePlantasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('plantas');
+        Schema::dropIfExists('plantes');
     }
 }

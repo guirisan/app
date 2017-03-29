@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTascasTable extends Migration
+class CreatePlagaPlantaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class CreateTascasTable extends Migration
      */
     public function up()
     {
-        Schema::create('tasques', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('plaga_planta', function (Blueprint $table) {
+            $table->integer('plaga_id');
+            $table->integer('planta_id');
+            $table->text('descripcio')->nullable();
+            $table->primary(['plaga_id', 'planta_id']);
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ class CreateTascasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tascas');
+        Schema::dropIfExists('plaga_planta');
     }
 }

@@ -19,9 +19,10 @@ class CreateImagesTable extends Migration
             $table->integer('user_id');
             $table->string('nom');
             $table->string('url');
-            $table->text('descripcio');
-            $table->string('owner_type');
-            $table->integer('owner_id');
+            $table->text('descripcio')->nullable();
+            $table->string('imageable_type');
+            $table->integer('imageable_id');
+            $table->unique(['user_id', 'imageable_id', 'imageable_type']);
         });
     }
 

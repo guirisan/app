@@ -36,8 +36,16 @@ Route::resource('plagues', 'PlagaController', ['parameters' => [
     'plagues' => 'plaga'
 ]]);
 
-Route::resource('remei', 'RemeiController', ['parameters' => [
-    'remei' => 'remei'
+Route::resource('remeis', 'RemeiController', ['parameters' => [
+    'remeis' => 'remei'
+]]);
+
+Route::resource('bancals', 'RemeiController', ['parameters' => [
+    'bancals' => 'bancal'
+]]);
+
+Route::resource('parceles', 'RemeiController', ['parameters' => [
+    'parceles' => 'parcela'
 ]]);
 // // Route::get('/plantes', 'PlantaController@index');
 // Route::get('/plantes', 'PlantaController@index');

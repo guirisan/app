@@ -16,10 +16,10 @@ class CreateGrupsTable extends Migration
         Schema::create('grups', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->integer('user_id');
             $table->string('nom');
             $table->string('nom_altres')->nullable();
             $table->text('descripcio')->nullable();
-            $table->integer('user_id');
         });
     }
 

@@ -10,7 +10,11 @@
                 <a href="/plantes/"><h2>Plantes</h2></a>
                 <a href="/grups/"><h3>Grups</h3></a>
                 <a href="/families/"><h3>Families</h3></a>
-                
+                <a href="/plagues/"><h2>Plagues</h2></a>
+                <a href="/remeis/"><h2>Remeis</h2></a>
+                <hr>
+                <a href="/bancals/"><h2>Bancals</h2></a>
+
             </div>
 
 

@@ -16,10 +16,10 @@ class CreateFamiliasTable extends Migration
         Schema::create('families', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->integer('user_id');
             $table->string('nom');
             $table->string('nom_altres')->nullable();
             $table->text('descripcio')->nullable();
-            $table->integer('user_id');
 
         });
     }
@@ -31,6 +31,6 @@ class CreateFamiliasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('familias');
+        Schema::dropIfExists('families');
     }
 }

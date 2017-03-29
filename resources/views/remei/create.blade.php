@@ -5,14 +5,12 @@
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
         <div class="panel panel-default">
-            <div class="panel-heading"> <strong>Afegir planta</strong> </div>
+            <div class="panel-heading"> <strong>Afegir remei</strong> </div>
 
             <div class="panel-body">
-            {!! Form::model(new App\Planta, ['method' => 'POST', 'route' => 'plantes.store', 'files' => true]) !!}
+            {!! Form::model(new App\Remei, ['method' => 'POST', 'route' => 'remeis.store', 'files' => true]) !!}
                 
-                @include('planta._inputs', 
-                    ['submitButtonText' => 'Crear planta'],
-                    ['resetButtonText' => 'Buidar'])
+                @include('remei._inputs')
                 
 {{--                 <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
                     {!! Form::label('image', 'Foto') !!}

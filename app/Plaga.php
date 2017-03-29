@@ -14,7 +14,7 @@ class Plaga extends Model
     
     public function images()
     {
-        return $this->morphMany('App\Image', 'owner');
+        return $this->morphMany('App\Image', 'imageable');
     }
 
     public function user()
@@ -24,12 +24,12 @@ class Plaga extends Model
 
     public function plantes()
     {
-    	return $this->hasMany(Planta::class)
+    	return $this->belongsToMany(Planta::class);
     }
     
     public function remeis()
     {
-    	return $this->hasMany(Remei::class)
+    	return $this->belongsToMany(Remei::class);
     }
     
 }

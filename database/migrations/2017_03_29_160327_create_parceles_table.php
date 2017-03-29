@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePlagasTable extends Migration
+class CreateParcelesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,16 @@ class CreatePlagasTable extends Migration
      */
     public function up()
     {
-        Schema::create('plagues', function (Blueprint $table) {
+        Schema::create('parceles', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->integer('user_id');
+            $table->integer('bancal_id');
             $table->string('nom');
-            $table->string('nom_cientific')->nullable();
-            $table->text('descripcio')->nullable();
-            $table->text('tractament')->nullable();
-
+            $table->integer('superficie');
+            $table->boolean('ocupada');
+            $table->text('descripcio');
         });
-
-        
     }
 
     /**
@@ -34,6 +32,6 @@ class CreatePlagasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('plagues');
+        Schema::dropIfExists('parceles');
     }
 }

@@ -56,3 +56,88 @@ $factory->define(App\Grup::class, function(Faker\Generator $faker){
         'user_id' => 1,
     ];   
 });
+
+$factory->define(App\Plaga::class, function(Faker\Generator $faker){
+    return [
+        'nom' => $faker->word,
+        'nom_cientific' => $faker->word,
+        'descripcio' => $faker->text,
+        'tractament' => $faker->text,
+        'user_id' => 1,
+    ];
+});
+
+$factory->define(App\Remei::class, function(Faker\Generator $faker){
+    return [
+        'nom' => $faker->word,
+        'nom_cientific' => $faker->word,
+        'descripcio' => $faker->text,
+        'preparacio' => $faker->text,
+        'aplicacio' => $faker->text,
+        'user_id' => 1,
+    ];
+});
+
+$factory->define(App\Image::class, function(Faker\Generator $faker){
+    return [
+        'user_id' => 1,
+        'nom' => $faker->word,
+        'url' => $faker->imageUrl,
+        'descripcio' => $faker->text,
+        'imageable_type' => '\App\Planta',
+        'imageable_id' => 1,
+    ];
+});
+
+$factory->define(App\Bancal::class, function(Faker\Generator $faker){
+    return [
+        'user_id' => 1,
+        'nom' => $faker->word,
+        'superficie' => $faker->numberBetween(1000,2000),
+        'descripcio' => $faker->text,
+    ];
+});
+
+$factory->define(App\Parcela::class, function(Faker\Generator $faker){
+    return [
+        'user_id' => 1,
+        'bancal_id' => 1,
+        'nom' => $faker->word,
+        'superficie' => $faker->numberBetween(50,200),
+        'ocupada' => $faker->boolean,
+        'descripcio' => $faker->text,
+    ];
+});
+
+$factory->define(App\Cultiu::class, function(Faker\Generator $faker){
+    return [
+        'user_id' => 1,
+        'planta_id' => 1,
+        'data_ini' => $faker->date,
+        'data_fi' => $faker->date,
+        'descripcio' => $faker->text,
+    ];
+});
+
+$factory->define(App\Event::class, function(Faker\Generator $faker){
+    return [
+        'user_id' => 1,
+        'parcela_id' => 1,
+        'nom' => $faker->word,
+        'data' => $faker->date(),
+        'fet' => $faker->boolean,
+        'descripcio' => $faker->text,
+    ];
+});
+
+/*
+$factory->define(App\Tasca::class, function(Faker\Generator $faker){
+    return [
+        'user_id' => 1,
+        'nom' => $faker->word,
+        'dies' => $faker->numberBetween(5,30),
+        'descripcio' => $faker->text,
+    ];
+});
+
+*/

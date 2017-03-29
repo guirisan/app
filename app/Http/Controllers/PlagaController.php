@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PlagaRequest;
 use App\Plaga;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class PlagaController extends Controller
      */
     public function index()
     {
-        $plagues = Plaga::all();
+        $plagues = auth()->user()->plagues;
         return view('plaga.index',compact('plagues'));
     }
 
@@ -25,7 +26,7 @@ class PlagaController extends Controller
      */
     public function create()
     {
-        //
+        return view('plaga.create');
     }
 
     /**
@@ -34,9 +35,18 @@ class PlagaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PlagaRequest $request)
     {
-        //
+        $plaga = Plaga::create(request([
+            'user_id',
+            'nom',
+            'nom_cientific',
+            'descripcio',
+            'tractament',
+        ]));
+
+        return redirect('/plagues');
+
     }
 
     /**
@@ -47,7 +57,7 @@ class PlagaController extends Controller
      */
     public function show(Plaga $plaga)
     {
-        //
+        return view('plaga.show',compact('plaga'));
     }
 
     /**
@@ -58,7 +68,7 @@ class PlagaController extends Controller
      */
     public function edit(Plaga $plaga)
     {
-        //
+        return view('plaga.edit', compact('plaga'));
     }
 
     /**
@@ -68,9 +78,17 @@ class PlagaController extends Controller
      * @param  \App\Plaga  $plaga
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Plaga $plaga)
+    public function update(PlagaRequest $request, Plaga $plaga)
     {
-        //
+        $plaga['nom'] = $request['nom'];
+        $plaga['nom_cientific'] = $request['nom_cientific'];
+        $plaga['descripcio'] = $request['descripcio'];
+        $plaga['tractament'] = $request['tractament'];
+
+        $plaga->save();
+
+        return view('plaga.show', compact('plaga'));
+
     }
 
     /**
@@ -81,6 +99,7 @@ class PlagaController extends Controller
      */
     public function destroy(Plaga $plaga)
     {
-        //
+        Planta::destroy($plaga->id);
+        return redirect('/plantes');
     }
 }

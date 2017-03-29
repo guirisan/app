@@ -2,7 +2,7 @@
 
 namespace App;
 
-class Remei extends Model
+class Cultiu extends Model
 {
 
     /**
@@ -10,7 +10,7 @@ class Remei extends Model
      *
      * @var string
      */
-    protected $table = 'remeis';
+    protected $table = 'cultius';
 
     public function user()
     {
@@ -22,13 +22,9 @@ class Remei extends Model
         return $this->morphMany('App\Image', 'imageable');
     }
 
-    public function tasques()
+    public function events()
     {
-        return $this->morphMany('App\Tasca', 'tasqueable');
+        return $this->morphMany('App\Events', 'eventable');
     }
 
-    public function plagues()
-    {
-        return $this->belongsToMany(Plaga::class);
-    }
 }
