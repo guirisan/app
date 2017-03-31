@@ -17,6 +17,12 @@ class AppServiceProvider extends ServiceProvider
         //https://github.com/laravel/framework/issues/17508
         //https://github.com/laravel/docs/blob/5.4/migrations.md
         Schema::defaultStringLength(191);
+
+        //https://github.com/guirisan/app/issues/10
+        //
+        view()->composer('planta._dropdown', function($view){
+            $view->with('plantes_dropdown_data', \App\Planta::pluck('nom','id'));
+        });
     }
 
     /**

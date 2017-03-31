@@ -36,26 +36,24 @@ Route::resource('plagues', 'PlagaController', ['parameters' => [
     'plagues' => 'plaga'
 ]]);
 
+Route::post('plagues/{plaga}/storePlanta', ['as' => 'plagues.storePlanta',
+    'uses' => 'PlagaController@storePlanta'
+]);
+
+
 Route::resource('remeis', 'RemeiController', ['parameters' => [
     'remeis' => 'remei'
 ]]);
 
-Route::resource('bancals', 'RemeiController', ['parameters' => [
+Route::resource('bancals', 'BancalController', ['parameters' => [
     'bancals' => 'bancal'
 ]]);
 
-Route::resource('parceles', 'RemeiController', ['parameters' => [
+Route::resource('parceles', 'ParcelaController', ['parameters' => [
     'parceles' => 'parcela'
 ]]);
-// // Route::get('/plantes', 'PlantaController@index');
-// Route::get('/plantes', 'PlantaController@index');
-// Route::get('/plantes/create/', 'PlantaController@create');
 
-// Route::post('/plantes?{planta}', 'PlantaController@update');
-// Route::post('/plantes?{planta}', ['as' => 'plantes', 'uses' => 'PlantaController@update']);
-// // http://localhost:8000/plantes?1
+Route::resource('images', 'ImageController', ['parameters' => [
+    'images' => 'image'
+]]);
 
-// // Route::post('/plantes', 'PlantaController@store');
-// Route::post('/plantes', ['as' => 'plantes', 'uses' => 'PlantaController@store']);
-// Route::get('/plantes/{planta}/edit', 'PlantaController@edit');
-// Route::get('/plantes/{planta}/', 'PlantaController@show');

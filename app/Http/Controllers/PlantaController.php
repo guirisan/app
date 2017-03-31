@@ -60,21 +60,6 @@ class PlantaController extends Controller
             'grup_id',
             'familia_id'
         ]));
-        /*
-        if ($request->file('image')) {
-            $path = $request->file('image')->storeAs('public', $request['nom'] . ".jpg");
-
-            $image = Image::create([
-                'nom' => $planta->nom,
-                'descripcio' => $request->image_descripcio,
-                'user_id' => 1,
-                'url' => '\/storage/' . $request['nom'] . '.jpg',
-                'owner_id' => $planta->id,
-                'owner_type' => 'App\Planta'
-            ]);
-        }
-        */
-
 
         return redirect('/plantes');
     }

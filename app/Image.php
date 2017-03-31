@@ -4,11 +4,10 @@ namespace App;
 
 class Image extends Model
 {
-    /*
-    
-    public function owner()
+
+    public function imageable()
     {
         return $this->morphTo();
     }
-     */
+    
 }

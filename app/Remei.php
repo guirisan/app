@@ -29,6 +29,6 @@ class Remei extends Model
 
     public function plagues()
     {
-        return $this->belongsToMany(Plaga::class);
+        return $this->belongsToMany(Plaga::class)->withPivot('descripcio');
     }
 }

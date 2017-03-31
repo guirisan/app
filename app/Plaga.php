@@ -24,12 +24,12 @@ class Plaga extends Model
 
     public function plantes()
     {
-    	return $this->belongsToMany(Planta::class);
+    	return $this->belongsToMany(Planta::class)->withPivot('descripcio');
     }
     
     public function remeis()
     {
-    	return $this->belongsToMany(Remei::class);
+    	return $this->belongsToMany(Remei::class)->withPivot('descripcio');
     }
     
 }

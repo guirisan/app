@@ -8,6 +8,18 @@
 
             <div class="panel-body">
               <p>
+                <a href="/plantes/{{ $planta->id }}/edit">
+                  <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                </a>
+                {!! Form::model(new App\Image, ['method' => 'POST', 'route' => 'images.store', 'files' => true]) !!}
+                  @include('image._inputs', 
+                      ['imageable_type' => 'App\Planta'],
+                      ['imageable_id' => $planta->id ],
+                      ['submitButtonText' => 'Guardar imatge' ])
+                {{ Form::close() }}
+
+              </p>
+              <p>
                 <strong>id:</strong> {{ $planta->id}}
               </p>
               <p>
@@ -47,9 +59,26 @@
               </p>
               
               @if (count($planta->images))
-                <p> 
-                  <strong>foto:</strong> <img src="{{ $planta->images->first()->url }}">
-                </p>
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>nom</th>
+                      <th>descripcio</th>
+                      <th>imatge</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  @foreach($planta->images as $image)
+                    <tr>
+                      <td>{{ $image->nom }}</td>
+                      <td>{{ $image->descripcio }}</td>
+                      <td><img src="{{ $image->url }}"></td>
+                    </tr>
+
+                  @endforeach
+                  </tbody>
+                </table>                
+
               @endif
               <h3>plagues</h3>
 

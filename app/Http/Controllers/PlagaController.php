@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PlagaAddPlantaRequest;
 use App\Http\Requests\PlagaRequest;
 use App\Plaga;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PlagaController extends Controller
 {
@@ -37,13 +39,13 @@ class PlagaController extends Controller
      */
     public function store(PlagaRequest $request)
     {
-        $plaga = Plaga::create(request([
-            'user_id',
-            'nom',
-            'nom_cientific',
-            'descripcio',
-            'tractament',
-        ]));
+        $plaga = Plaga::create([
+            'user_id' => Auth::id(),
+            'nom' => request('nom'),
+            'nom_cientific' => request('nom_cientific'),
+            'descripcio' => request('descripcio'),
+            'tractament' => request('tractament'),
+        ]);
 
         return redirect('/plagues');
 
@@ -100,6 +102,30 @@ class PlagaController extends Controller
     public function destroy(Plaga $plaga)
     {
         Planta::destroy($plaga->id);
-        return redirect('/plantes');
+        return redirect('/plagues');
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Plaga  $plaga
+     * @return \Illuminate\Http\Response
+     */
+    public function addRemei(Plaga $plaga)
+    {
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Plaga  $plaga
+     * @return \Illuminate\Http\Response
+     */
+    public function storePlanta(PlagaAddPlantaRequest $request, Plaga $plaga)
+    {
+        //TODO: guardar 'descripcio' si n'hi ha
+        $plaga->plantes()->attach($request['planta']); //attach($roleId, ['expires' => $expires]);
+        return redirect('/plagues/' . $plaga->id);
+    }
+
 }

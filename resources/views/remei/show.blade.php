@@ -7,6 +7,9 @@
             <div class="panel-heading"> <strong>{{ $remei->nom }}</strong> </div>
 
             <div class="panel-body">
+
+            @include('planta._dropdown');
+
               <p>
                 <strong>id:</strong> {{ $remei->id}}
               </p>

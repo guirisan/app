@@ -45,7 +45,8 @@ window.axios.defaults.headers.common = {
 // });
 
 /**
-* Import bootstrap (trying to...) 
+* Import libraries
 */
 
 require('bootstrap');
+require('dropzone');
