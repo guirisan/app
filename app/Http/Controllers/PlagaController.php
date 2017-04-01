@@ -101,7 +101,7 @@ class PlagaController extends Controller
      */
     public function destroy(Plaga $plaga)
     {
-        Planta::destroy($plaga->id);
+        Plaga::destroy($plaga->id);
         return redirect('/plagues');
     }
 

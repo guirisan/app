@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ImageRequest;
 use App\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class ImageController extends Controller
 {
@@ -36,45 +38,38 @@ class ImageController extends Controller
      */
     public function store(ImageRequest $request)
     {
-        $file =UploadedFile::create($request->file('file'));
-        if ($request->file('file')) {
-            $image = Image::create([
-                'nom'               => $request->nom,
-                'descripcio'        => $request->image_descripcio,
-                'user_id'           => auth()->user()->id,
-                'path'              => '/storage/user/'. 
-                                        auth()->user()->id . '/' .
-                                        sprintf('%s-%s',time(), $file->getClientOriginalName()),
-                'thumbnail_path'    => '/storage/user/'. 
-                                        auth()->user()->id . '/' .
-                                        sprintf('tn-%s-$s',time(), $file->getClientOriginalName()),
-                'imageable_id'      => $request->imageable_id,
-                'imageable_type'    => $request->imageable_type,
-                //testing
-            ]);
 
-            $request->file('file')->storeAs('public', $request->getClientOriginalName() . ".jpg");
+        $image = $this->makeImage($request->file, $request);
+        
 
 
-            // $image = $this->makeImage($request->file, $request);
-        }
+        
         return Response::json('success', 200);
     }
 
-    protected function makeImage(UploadFile $file, ImageRequest $request)
+    protected function makeImage(UploadedFile $file, ImageRequest $request)
     {
         //make image
         //make thumbnail image
+        //dd($file->getClientOriginalName());
+        $name = sprintf('%s-%s',time(), $file->getClientOriginalName());
+        
+        $path = '/storage/user/'. auth()->user()->id . '/' . $name;
         
         $image = Image::create([
-                // 'nom' => $request->nom,
-                //'descripcio' => $request->image_descripcio,
-                'user_id' => auth()->user()->id,
-                'path' => '/storage/user/'. auth()->user()->id . '/' . sprintf('%s-$s',time(), $request->nom),
-                'imageable_id' => $request->imageable_id,
-                'imageable_type' => $request->imageable_type,
-                //testing
-            ]);
+            'nom'               => $request->nom,
+            'descripcio'        => $request->image_descripcio,
+            'user_id'           => auth()->user()->id,
+            'path'              => $path,
+            'thumbnail_path'    => '/storage/user/'. 
+                                    auth()->user()->id . '/' .
+                                    sprintf('tn-%s', $name),
+            'imageable_id'      => $request->imageable_id,
+            'imageable_type'    => $request->imageable_type,
+            //testing
+        ]);
+
+        $request->file('file')->storeAs('public/user/' . auth()->user()->id, $name);
 
     }
 

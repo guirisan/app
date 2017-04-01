@@ -8,14 +8,6 @@
 
             <div class="panel-body">
 
-            
-
-
-
-
-            
-              
-
               <p>
                 <strong>id:</strong> {{ $plaga->id }}
               </p>
@@ -78,29 +70,29 @@
                 </div>
               </div>
 
-            <a class="btn btn-primary" data-toggle="modal" href='#modalCreateImage'>Afegir imatge</a>
-            <div class="modal fade" id="modalCreateImage">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Afegir imatge</h4>
-                  </div>
-                  <div class="modal-body">
-                    {!! Form::model(new App\Image, ['method' => 'POST', 'route' => 'images.store', 'files' => true, 'class' => 'dropzone']) !!}
-                      @include('image._inputs', 
-                          ['imageable_type' => 'App\Plaga'],
-                          ['imageable_id' => $plaga->id ],
-                          ['submitButtonText' => 'Guardar imatge' ])
-                    {{ Form::close() }}
+              <a class="btn btn-primary" data-toggle="modal" href='#modalCreateImage'>Afegir imatge</a>
+              <div class="modal fade" id="modalCreateImage">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title">Afegir imatge</h4>
+                    </div>
+                    <div class="modal-body">
+                      {!! Form::model(new App\Image, ['method' => 'POST', 'route' => 'images.store', 'files' => true, 'class' => 'dropzone']) !!}
+                        @include('image._inputs', 
+                            ['imageable_type' => 'App\Plaga'],
+                            ['imageable_id' => $plaga->id ],
+                            ['submitButtonText' => 'Guardar imatge' ])
+                      {{ Form::close() }}
 
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
 
               <h3>plantes</h3>

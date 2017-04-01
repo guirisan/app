@@ -23,6 +23,10 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('planta._dropdown', function($view){
             $view->with('plantes_dropdown_data', \App\Planta::pluck('nom','id'));
         });
+
+        view()->composer('plaga._dropdown', function($view){
+            $view->with('plagues_dropdown_data', \App\Plaga::pluck('nom','id'));
+        });
     }
 
     /**
