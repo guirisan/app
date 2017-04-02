@@ -34,8 +34,10 @@
                                   <a href="/plantes/{{ $planta->id }}/edit">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                   </a>
-                                  {{ Form::open(['method' => 'DELETE', 'route' => ['plantes.destroy', $planta->id]]) }}
-                                        {{ Form::button('<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>', ['class' => 'btn-link', 'type' => 'submit']) }}
+                                  {{ Form::open(['method' => 'DELETE', 'route' => ['plantes.destroy', $planta->id], 'class' => 'form-inline']) }}
+                                    <div class="form-group">
+                                      {{ Form::button('<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>', ['class' => 'btn-link', 'type' => 'submit']) }}
+                                    </div>
                                   {{ Form::close() }}
                                 </td>
                               </tr>
