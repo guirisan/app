@@ -6,6 +6,8 @@ use App\Http\Requests\ImageRequest;
 use App\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Storage;
+use InterventionImage;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class ImageController extends Controller
@@ -41,9 +43,6 @@ class ImageController extends Controller
 
         $image = $this->makeImage($request->file, $request);
         
-
-
-        
         return Response::json('success', 200);
     }
 
@@ -69,7 +68,12 @@ class ImageController extends Controller
             //testing
         ]);
 
+
         $request->file('file')->storeAs('public/user/' . auth()->user()->id, $name);
+
+        InterventionImage::make($request->file('file'))
+            ->fit(330)  
+            ->save($image->thumbnail_path);
 
     }
 
@@ -90,9 +94,9 @@ class ImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Image $image)
     {
-        //
+        return view('image.edit',compact('image'));
     }
 
     /**
@@ -102,9 +106,14 @@ class ImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ImageRequest $request, Image $image)
     {
-        //
+        $image['nom'] = $request['nom'];
+        $image['descripcio'] = $request['descripcio'];
+
+        $image->save();
+
+        return Response::json('success', 200);  
     }
 
     /**
@@ -113,8 +122,14 @@ class ImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Image $image)
     {
-        //
+        dd(Storage::files('storage/user'));
+        Storage::delete([$image->path, $image->thumbnail_path]);
+        $image->imageable()->dissociate();
+        $image->delete();
+        dd($image);
+         
+        return Response::json('success', 200);  
     }
 }

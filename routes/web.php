@@ -24,6 +24,16 @@ Route::resource('plantes', 'PlantaController', ['parameters' => [
     'plantes' => 'planta'
 ]]);
 
+Route::post('plantes/{planta}/storePlaga', ['as' => 'plantes.storePlaga',
+    'uses' => 'PlantaController@storePlaga'
+]);
+
+Route::post('plantes/{planta}/storeRemei', ['as' => 'plantes.storeRemei',
+    'uses' => 'PlantaController@storeRemei'
+]);
+
+
+
 Route::resource('grups','GrupController', ['parameters' => [
     'grups' => 'grup'
 ]]);

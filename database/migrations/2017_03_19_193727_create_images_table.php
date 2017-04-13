@@ -17,13 +17,14 @@ class CreateImagesTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->integer('user_id');
-            $table->string('nom');
+
             $table->string('path');
             $table->string('thumbnail_path');
-
-            $table->text('descripcio')->nullable();
             $table->string('imageable_type');
             $table->integer('imageable_id');
+
+            $table->string('nom')->nullable();
+            $table->text('descripcio')->nullable();
             //$table->unique(['user_id', 'imageable_id', 'imageable_type']); //esta restricció només permet una imatge per a cada model (una per a cada planta, per a cada plaga, etc.)
         });
     }

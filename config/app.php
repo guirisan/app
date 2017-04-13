@@ -235,7 +235,7 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         //https://github.com/guirisan/app/issues/13
-        'Image' => Intervention\Image\Facades\Image::class
+        'InterventionImage' => Intervention\Image\Facades\Image::class
 
     ],
 

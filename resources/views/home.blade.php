@@ -7,7 +7,6 @@
             <div class="panel-heading">Dashboard</div>
 
             <div class="panel-body">
-                <form action="/error" method="post" class="dropzone"></form>
                 <a href="/plantes/"><h2>Plantes</h2></a>
                 <a href="/grups/"><h3>Grups</h3></a>
                 <a href="/families/"><h3>Families</h3></a>

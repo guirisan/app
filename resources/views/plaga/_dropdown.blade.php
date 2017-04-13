@@ -1,8 +1,8 @@
 @if (count($plagues_dropdown_data))
-    <div class="form-group{{ $errors->has('planta') ? ' has-error' : '' }}">
-        {!! Form::label('planta', 'Planta') !!}
-        {!! Form::select('planta',$plagues_dropdown_data, null, ['id' => 'planta', 'class' => 'form-control', 'multiple' => 'multiple', 'required' => 'required']) !!}
-        <small class="text-danger">{{ $errors->first('planta') }}</small>
+    <div class="form-group{{ $errors->has('plaga') ? ' has-error' : '' }}">
+        {!! Form::label('plaga', 'plaga') !!}
+        {!! Form::select('plaga',$plagues_dropdown_data, null, ['id' => 'plaga', 'class' => 'form-control', 'multiple' => 'multiple', 'required' => 'required']) !!}
+        <small class="text-danger">{{ $errors->first('plaga') }}</small>
     </div>
 
     <div class="form-group{{ $errors->has('descripcio') ? ' has-error' : '' }}">
@@ -16,9 +16,4 @@
         {!! Form::submit($submitButtonText, ['class' => 'btn btn-success']) !!}
     </div>
 
-    @section('footer')
-        <script>
-            $("#planta").select2();
-        </script>
-    @endsection
 @endif

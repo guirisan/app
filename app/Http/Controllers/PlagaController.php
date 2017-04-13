@@ -108,10 +108,10 @@ class PlagaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Plaga  $plaga
+     * @param  \App\Plaga  $remei
      * @return \Illuminate\Http\Response
      */
-    public function addRemei(Plaga $plaga)
+    public function storeRemei(Remei $remei)
     {
     }
 
@@ -123,8 +123,11 @@ class PlagaController extends Controller
      */
     public function storePlanta(PlagaAddPlantaRequest $request, Plaga $plaga)
     {
+        //////////////////////////////////////////
         //TODO: guardar 'descripcio' si n'hi ha
-        $plaga->plantes()->attach($request['planta']); //attach($roleId, ['expires' => $expires]);
+        //      attach($roleId, ['expires' => $expires]);
+        //////////////////////////////////////////
+        $plaga->plantes()->attach($request['planta']); 
         return redirect('/plagues/' . $plaga->id);
     }
 

@@ -19,3 +19,18 @@ require('./bootstrap');
     el: '#app'
 });
 */
+
+
+/** 
+ * JAVASCRIPT USER INITIATORS
+ */
+
+$("#plaga.form-control").select2();
+$('[data-toggle="popover"]').popover();
+
+
+
+/** 
+ * END JAVASCRIPT USER INITIATORS
+ */
+

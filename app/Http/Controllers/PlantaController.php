@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PlantaAddPlagaRequest;
+use App\Http\Requests\PlantaRequest;
+use App\Image;
+use App\Planta;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
-use App\Planta;
-use App\Image;
-use App\Http\Requests\PlantaRequest;
 
 class PlantaController extends Controller
 {
@@ -121,5 +122,21 @@ class PlantaController extends Controller
     {
         Planta::destroy($planta->id);
         return redirect('/plantes');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Plaga  $planta
+     * @return \Illuminate\Http\Response
+     */
+    public function storePlaga(PlantaAddPlagaRequest $request, Planta $planta)
+    {
+        //////////////////////////////////////////
+        //TODO: guardar 'descripcio' si n'hi ha
+        //      attach($roleId, ['expires' => $expires]);
+        //////////////////////////////////////////
+        $planta->plagues()->attach($request['plaga']); 
+        return redirect('/plantes/' . $planta->id);
     }
 }
