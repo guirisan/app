@@ -11,5 +11,14 @@ class Familia extends Model
      * @var string
      */
     protected $table = 'families';
-    //
+    
+    /**
+     * Give familia show path
+     * 
+     * @return /families/{id}
+     */
+    public function path()
+    {
+        return ('/families/' . $this->id);
+    }
 }

@@ -136,7 +136,7 @@ class PlantaController extends Controller
         //TODO: guardar 'descripcio' si n'hi ha
         //      attach($roleId, ['expires' => $expires]);
         //////////////////////////////////////////
-        $planta->plagues()->attach($request['plaga']); 
+        $planta->plagues()->attach($request['plaga'], ['descripcio' => $request['descripcio']]); 
         return redirect('/plantes/' . $planta->id);
     }
 }

@@ -65,7 +65,7 @@
                           @else
                             <div class="item">
                           @endif
-                            <img  alt="{{ $image->nom }}" src="/{{ $image->thumbnail_path }}">
+                            <img  alt="{{ $image->nom }}" src="{{ $image->thumbnail_path }}">
                             <div class="container">
                               <div class="carousel-caption">
 
@@ -172,7 +172,7 @@
                         <p>
                           <strong>
 
-
+                               
                             <a 
                               class="btn btn-lg btn-danger" 
                               tabindex="0" 
@@ -180,7 +180,16 @@
                               data-toggle="popover"
                               data-trigger="focus"
                               title="{{ $plaga->nom }}" 
-                              data-content="{{ $plaga->pivot->descripcio }}">
+                              data-html="true" 
+                              data-content=
+                              "<p> {{ $plaga->pivot->descripcio }} </p>
+                              <p>
+                                <a class='btn btn-primary btn-sm' href='/plagues/{{ $plaga->id }}'>
+                                  Veure plaga
+                                </a>
+                              </p>"
+
+                              >
                           
                                 {{ $plaga->nom }}
 

@@ -17,6 +17,16 @@ class Parcela extends Model
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * Give parcela show path
+     * 
+     * @return /parceles/{id}
+     */
+    public function path()
+    {
+        return ('/parceles/' . $this->id);
+    }
+
     public function bancal()
     {
         return $this->belongsTo(Bancal::class);

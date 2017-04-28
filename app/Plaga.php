@@ -12,15 +12,26 @@ class Plaga extends Model
      */
     protected $table = 'plagues';
     
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    
+    /**
+     * Give plaga show path
+     * 
+     * @return /plagues/{id}
+     */
+    public function path()
+    {
+        return ('/plagues/' . $this->id);
+    }
+
     public function images()
     {
         return $this->morphMany('App\Image', 'imageable');
     }
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 
     public function plantes()
     {

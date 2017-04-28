@@ -20,7 +20,36 @@
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
-                &nbsp;
+                <li>
+                    <a href="{{ route('plantes.index') }}">
+                        Plantes
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('plagues.index') }}">
+                        Plagues
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('remeis.index') }}">
+                        Remeis
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('bancals.index') }}">
+                        Bancals
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('parceles.index') }}">
+                        Parceles
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        Cultius
+                    </a>
+                </li>
             </ul>
 
             <!-- Right Side Of Navbar -->

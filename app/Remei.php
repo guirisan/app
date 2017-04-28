@@ -12,6 +12,16 @@ class Remei extends Model
      */
     protected $table = 'remeis';
 
+    /**
+     * Give remei show path
+     * 
+     * @return /remeis/{id}
+     */
+    public function path()
+    {
+        return ('/remeis/' . $this->id);
+    }
+    
     public function user()
     {
         return $this->belongsTo(User::class);

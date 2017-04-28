@@ -4,12 +4,24 @@ namespace App;
 
 class Bancal extends Model
 {
-        /**
+     /**
      * The table associated with the model.
      *
      * @var string
      */
     protected $table = 'bancals';
+
+
+    /**
+     * Give bancal show path
+     * 
+     * @return /bancals/{id}
+     */
+    public function path()
+    {
+        return ('/bancals/' . $this->id);
+    }
+
 
     public function user()
     {

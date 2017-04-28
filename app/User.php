@@ -27,6 +27,16 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /**
+     * Give user show path
+     * 
+     * @return /user/{id}
+     */
+    public function path()
+    {
+        return ('/user/' . $this->id);
+    }
+
     public function plantes()
     {
         return $this->hasMany(Planta::class);

@@ -5,36 +5,36 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
-                <div class="panel-heading">Plantes</div>
+                <div class="panel-heading">Bancals</div>
 
                 <div class="panel-body">
 
-                    @if (count($plantes))
+                    @if (count($bancals))
                         <table class="table table-hover">
                           <thead>
                             <tr>
                               <th>nom</th>
-                              <th>nom_cientific</th>
+                              <th>superficie</th>
                               <th></th>
                             </tr>
                           </thead>
                           <tbody>
                             
-                            @foreach ($plantes as $planta)
+                            @foreach ($bancals as $bancal)
                               <tr>
                                 <td>
-                                  <a href="/plantes/{{ $planta->id }}">
-                                      {{ $planta->nom}} 
+                                  <a href="/bancals/{{ $bancal->id }}">
+                                      {{ $bancal->nom}} 
                                   </a>                                  
                                 </td>
                                 <td>
-                                  {{ $planta->nom_cientific }}
+                                  {{ $bancal->superficie }}
                                 </td>
                                 <td>
-                                  <a href="/plantes/{{ $planta->id }}/edit">
+                                  <a href="/bancals/{{ $bancal->id }}/edit">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                   </a>
-                                  {{ Form::open(['method' => 'DELETE', 'route' => ['plantes.destroy', $planta->id]]) }}
+                                  {{ Form::open(['method' => 'DELETE', 'route' => ['bancals.destroy', $bancal->id]]) }}
                                         {{ Form::button('<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>', ['class' => 'btn-link', 'type' => 'submit']) }}
                                   {{ Form::close() }}
                                 </td>
@@ -44,10 +44,10 @@
                         </table>
 
                     @else
-                      <h3>No hi ha plantes creades</h3>
+                      <h3>No hi ha bancals creades</h3>
                     @endif
-                    <a class="btn btn-primary" href="/plantes/create/">
-                      Afegir planta
+                    <a class="btn btn-primary" href="/bancals/create/">
+                      Afegir bancal
                     </a>
 
                 </div>

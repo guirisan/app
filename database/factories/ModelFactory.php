@@ -130,7 +130,7 @@ $factory->define(App\Event::class, function(Faker\Generator $faker){
     ];
 });
 
-/*
+
 $factory->define(App\Tasca::class, function(Faker\Generator $faker){
     return [
         'user_id' => 1,
@@ -140,4 +140,4 @@ $factory->define(App\Tasca::class, function(Faker\Generator $faker){
     ];
 });
 
-*/
+

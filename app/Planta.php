@@ -12,7 +12,22 @@ class Planta extends Model
      * @var string
      */
     protected $table = 'plantes';
-        
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Give planta show path
+     * 
+     * @return /plantes/{id}
+     */
+    public function path()
+    {
+        return ('/plantes/' . $this->id);
+    }
+            
     public function images()
     {
         return $this->morphMany('App\Image', 'imageable');
@@ -23,10 +38,6 @@ class Planta extends Model
         return $this->morphMany('App\Tasca', 'tasqueable');
     }
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 
     public function grup()
     {

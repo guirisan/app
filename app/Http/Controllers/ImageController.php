@@ -71,9 +71,15 @@ class ImageController extends Controller
 
         $request->file('file')->storeAs('public/user/' . auth()->user()->id, $name);
 
+        // InterventionImage::make($request->file('file'))
+        //     ->fit(330)  
+        //     //->save($image->thumbnail_path);
+        //     ->save('/public/user/' . auth()->user()->id . '/tn-' . $name);
+
         InterventionImage::make($request->file('file'))
-            ->fit(330)  
-            ->save($image->thumbnail_path);
+            ->fit(330)
+            //->save($image->thumbnail_path);
+            ->save('public/user/' . auth()->user()->id . '/tn-' . $name);
 
     }
 
