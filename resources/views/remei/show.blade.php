@@ -1,4 +1,4 @@
-@extends('layouts.app')
+ @extends('layouts.app')
 
 @section('content')
 <div class="row">
@@ -8,7 +8,6 @@
 
             <div class="panel-body">
 
-            @include('planta._dropdown');
 
               <p>
                 <strong>id:</strong> {{ $remei->id}}

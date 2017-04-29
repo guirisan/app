@@ -18,6 +18,7 @@ class CreateCultiusTable extends Migration
             $table->timestamps();
             $table->integer('user_id');
             $table->integer('planta_id');
+            $table->integer('parcela_id');
             $table->date('data_ini');
             $table->date('data_fi');
             $table->text('descripcio')->nullable();

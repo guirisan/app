@@ -4,63 +4,41 @@
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
         <div class="panel panel-default">
-            <div class="panel-heading"> <strong>{{ $planta->nom }}</strong> </div>
+            <div class="panel-heading"> <strong>{{ $parcela->nom }}</strong> </div>
 
             <div class="panel-body">
               <p>
-                <strong>id:</strong> {{ $planta->id}}
+                <strong>id:</strong> {{ $parcela->id}}
               </p>
               <p>
-                <strong>nom:</strong> {{ $planta->nom}}
+                <strong>nom:</strong> {{ $parcela->nom}}
               </p>
               <p>
-                <strong>nom_cientific:</strong> {{ $planta->nom_cientific}} 
+                <strong>descripcio:</strong> {{ $parcela->descripcio}}
               </p>
               <p>
-                <strong>descripcio:</strong> {{ $planta->descripcio}}
-              </p>
-              <p>
-                <strong>sembra_ini:</strong> {{ $planta->sembra_ini}}
-              </p>
-              <p>
-                <strong>sembra_fi:</strong> {{ $planta->sembra_fi}} 
-              </p>
-              <p>
-                <strong>sembra:</strong> {{ $planta->sembra}}
-              </p>
-              <p>
-                <strong>cultiu:</strong> {{ $planta->cultiu}}
-              </p>
-              <p>
-                <strong>collita:</strong> {{ $planta->collita}} 
-              </p>
-              <p>
-                <strong>user_id:</strong> {{ $planta->user_id}} 
+                <strong>superficie:</strong> {{ $parcela->superficie}}
               </p>
 
               <p>
-                <strong>grup:</strong> {{ $planta->grup->nom}} 
-              </p>
-
-              <p>
-                <strong>familia:</strong> {{ $planta->familia->nom}}
+                <strong>ocupada:</strong> {{ $parcela->ocupada}} 
               </p>
               
-              @if (count($planta->images))
+              @if (count($parcela->images))
                 <p> 
-                  <strong>foto:</strong> <img src="{{ $planta->images->first()->url }}">
+                  <strong>foto:</strong> <img src="{{ $parcela->images->first()->url }}">
                 </p>
               @endif
-              <h3>plagues</h3>
+              <h3>cultius</h3>
 
-              @if (count($planta->plagues))
-                @foreach ($planta->plagues as $plaga)
-                  <a href="/plaga/{{ $plaga->id }}">
-                    {{ $plaga->nom }}
+              @if (count($parcela->cultius))
+                @foreach ($parcela->cultius as $cultiu)
+                  <a href="/cultiu/{{ $cultiu->id }}">
+                    {{ $cultiu->id }}
                   </a>
                 @endforeach
               @else
-                <p>no hi ha plagues associades</p>
+                <p>no hi ha cultius associats</p>
               @endif
 
             </div>

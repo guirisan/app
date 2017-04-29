@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Bancal;
+use App\Http\Requests\BancalRequest;
 use Illuminate\Http\Request;
 
 class BancalController extends Controller
@@ -73,7 +74,7 @@ class BancalController extends Controller
      */
     public function edit(Bancal $bancal)
     {
-        return view('bancal.edit', compact('$bancal'));
+        return view('bancal.edit', compact('bancal'));
     }
 
     /**

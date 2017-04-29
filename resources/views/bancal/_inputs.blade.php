@@ -15,7 +15,7 @@
 </div>
 
 <div class="form-group{{ $errors->has('superficie') ? ' has-error' : '' }}">
-    {!! Form::label('superficie', 'Familia') !!}
+    {!! Form::label('superficie', 'Superficie (m2)') !!}
     {!! Form::text('superficie', null, ['class' => 'form-control']) !!}
     <small class="text-danger">{{ $errors->first('superficie') }}</small>
 </div>

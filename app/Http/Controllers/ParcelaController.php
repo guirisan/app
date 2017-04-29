@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ParcelaRequest;
 use App\Parcela;
 use Illuminate\Http\Request;
 
@@ -75,7 +76,7 @@ class ParcelaController extends Controller
      */
     public function edit(Parcela $parcela)
     {
-        return view('parcela.edit', compact('$parcela'));
+        return view('parcela.edit', compact('parcela'));
     }
 
     /**

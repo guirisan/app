@@ -67,3 +67,8 @@ Route::resource('images', 'ImageController', ['parameters' => [
     'images' => 'image'
 ]]);
 
+
+Route::resource('cultius', 'CultiuController', ['parameters' => [
+    'cultius' => 'cultiu'
+]]);
+

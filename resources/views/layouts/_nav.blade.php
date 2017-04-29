@@ -46,7 +46,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ route('cultius.index') }}">
                         Cultius
                     </a>
                 </li>

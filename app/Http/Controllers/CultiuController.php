@@ -2,11 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CultiuRequest;
 use App\Cultiu;
 use Illuminate\Http\Request;
 
 class CultiuController extends Controller
 {
+    /**
+     * Requires user to be autenticated to call this controller.
+     */    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +23,8 @@ class CultiuController extends Controller
      */
     public function index()
     {
-        //
+        $cultius = auth()->user()->cultius;
+        return view('cultiu.index', compact('cultius'));
     }
 
     /**
@@ -24,7 +34,7 @@ class CultiuController extends Controller
      */
     public function create()
     {
-        //
+        return view ('cultiu.create');
     }
 
     /**
@@ -33,9 +43,19 @@ class CultiuController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CultiuRequest $request)
     {
-        //
+        $cultiu = Cultiu::create(request([
+            'user_id', //agafar d'altre puesto
+            'parcela_id',
+            'planta_id',
+            'data_ini',
+            'data_fi',
+            'descripcio',
+        ]));
+        //$cultiu->user_id = auth()->user()->id;
+
+        return redirect('/cultius');
     }
 
     /**
@@ -46,7 +66,7 @@ class CultiuController extends Controller
      */
     public function show(Cultiu $cultiu)
     {
-        //
+        return view('cultiu.show', compact('cultiu'));
     }
 
     /**
@@ -57,7 +77,7 @@ class CultiuController extends Controller
      */
     public function edit(Cultiu $cultiu)
     {
-        //
+        return view('cultiu.edit', compact('cultiu'));
     }
 
     /**
@@ -67,9 +87,18 @@ class CultiuController extends Controller
      * @param  \App\Cultiu  $cultiu
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cultiu $cultiu)
+    public function update(CultiuRequest $request, Cultiu $cultiu)
     {
-        //
+        $cultiu['user_id'] = auth()->user()->id;
+        $cultiu['planta_id'] = $request['planta_id'];
+        $cultiu['parcela_id'] = $request['parcela_id'];
+        $cultiu['data_ini'] = $request['data_ini'];
+        $cultiu['data_fi'] = $request['data_fi'];
+        $cultiu['descripcio'] = $request['descripcio'];
+
+        $cultiu->save();
+
+        return view('cultiu.show', compact('cultiu'));
     }
 
     /**
@@ -80,6 +109,7 @@ class CultiuController extends Controller
      */
     public function destroy(Cultiu $cultiu)
     {
-        //
+        Cultiu::destroy($cultiu->id);
+        return redirect('/cultius');
     }
 }

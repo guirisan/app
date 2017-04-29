@@ -5,40 +5,40 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
-                <div class="panel-heading">Parceles</div>
+                <div class="panel-heading">Cultius</div>
 
                 <div class="panel-body">
 
-                    @if (count($parceles))
+                    @if (count($cultius))
                         <table class="table table-hover">
                           <thead>
                             <tr>
-                              <th>nom</th>
-                              <th>bancal</th>
-                              <th>superficie</th>
+                              <th>id</th>
+                              <th>parcela</th>
+                              <th>planta</th>
                               <th></th>
                             </tr>
                           </thead>
                           <tbody>
                             
-                            @foreach ($parceles as $parcela)
+                            @foreach ($cultius as $cultiu)
                               <tr>
                                 <td>
-                                  <a href="/parceles/{{ $parcela->id }}">
-                                      {{ $parcela->nom}} 
+                                  <a href="/cultius/{{ $cultiu->id }}">
+                                      {{ $cultiu->id}} 
                                   </a>                                  
                                 </td>
                                 <td>
-                                  {{ $parcela->bancal_id }}
+                                  {{ $cultiu->parcela_id }}
                                 </td>
                                 <td>
-                                  {{ $parcela->superficie }}
+                                  {{ $cultiu->planta_id }}
                                 </td>
                                 <td>
-                                  <a href="/parceles/{{ $parcela->id }}/edit">
+                                  <a href="/cultius/{{ $cultiu->id }}/edit">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                   </a>
-                                  {{ Form::open(['method' => 'DELETE', 'route' => ['parceles.destroy', $parcela->id]]) }}
+                                  {{ Form::open(['method' => 'DELETE', 'route' => ['cultius.destroy', $cultiu->id]]) }}
                                         {{ Form::button('<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>', ['class' => 'btn-link', 'type' => 'submit']) }}
                                   {{ Form::close() }}
                                 </td>
@@ -48,10 +48,10 @@
                         </table>
 
                     @else
-                      <h3>No hi ha parceles creades</h3>
+                      <h3>No hi ha cultius creades</h3>
                     @endif
-                    <a class="btn btn-primary" href="/parceles/create/">
-                      Afegir parcela
+                    <a class="btn btn-primary" href="/cultius/create/">
+                      Afegir cultiu
                     </a>
 
                 </div>

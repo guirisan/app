@@ -112,6 +112,7 @@ $factory->define(App\Parcela::class, function(Faker\Generator $faker){
 $factory->define(App\Cultiu::class, function(Faker\Generator $faker){
     return [
         'user_id' => 1,
+        'parcela_id' => 1,
         'planta_id' => 1,
         'data_ini' => $faker->date,
         'data_fi' => $faker->date,
