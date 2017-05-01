@@ -187,6 +187,9 @@
                                 <a class='btn btn-primary btn-sm' href='/plagues/{{ $plaga->id }}'>
                                   Veure plaga
                                 </a>
+                                <a href="/plantes/{{ $planta->id }}/editPlaga/{{ $plaga->id }}">
+                                  edit relation
+                                </a>
                               </p>"
 
                               >

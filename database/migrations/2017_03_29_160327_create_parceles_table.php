@@ -20,7 +20,7 @@ class CreateParcelesTable extends Migration
             $table->integer('bancal_id');
             $table->string('nom');
             $table->integer('superficie');
-            $table->boolean('ocupada')->nullable()->default(0);
+            $table->boolean('ocupada')->default(false);
             $table->text('descripcio')->nullable();
         });
     }

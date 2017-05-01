@@ -2,11 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EventRequest;
 use App\Event;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
+    /**
+     * Requires user to be autenticated to call this controller.
+     */    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +23,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        $events = auth()->user()->events;
+        return view('event.index', compact('events'));
     }
 
     /**
@@ -24,7 +34,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        return view ('event.create');
     }
 
     /**
@@ -33,9 +43,19 @@ class EventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EventRequest $request)
     {
-        //
+        $event = Event::create(request([
+            'user_id', //agafar d'altre puesto
+            'parcela_id',
+            'nom',
+            'data',
+            'fet',
+            'descripcio',
+        ]));
+        //$event->user_id = auth()->user()->id;
+
+        return redirect('/events');
     }
 
     /**
@@ -46,7 +66,7 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        //
+        return view('event.show', compact('event'));
     }
 
     /**
@@ -57,7 +77,7 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        //
+        return view('event.edit', compact('event'));
     }
 
     /**
@@ -67,9 +87,18 @@ class EventController extends Controller
      * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Event $event)
+    public function update(EventRequest $request, Event $event)
     {
-        //
+        $event['user_id'] = auth()->user()->id;
+        $event['parcela_id'] = $request['parcela_id'];
+        $event['nom'] = $request['nom'];
+        $event['data'] = $request['data'];
+        $event['fet'] = $request['fet'];
+        $event['descripcio'] = $request['descripcio'];
+
+        $event->save();
+
+        return view('event.show', compact('event'));
     }
 
     /**
@@ -80,6 +109,7 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
+        Event::destroy($event->id);
+        return redirect('/events');
     }
 }

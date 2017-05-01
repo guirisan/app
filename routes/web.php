@@ -72,3 +72,7 @@ Route::resource('cultius', 'CultiuController', ['parameters' => [
     'cultius' => 'cultiu'
 ]]);
 
+Route::resource('events', 'EventController', ['parameters' => [
+    'events' => 'event'
+]]);
+

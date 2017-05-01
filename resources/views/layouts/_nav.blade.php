@@ -50,6 +50,11 @@
                         Cultius
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('events.index') }}">
+                        Events
+                    </a>
+                </li>
             </ul>
 
             <!-- Right Side Of Navbar -->

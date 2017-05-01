@@ -125,18 +125,28 @@ class PlantaController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Add plaga to planta
      *
-     * @param  \App\Plaga  $planta
+     * @param  |App\Http\Requests\PlantaAddPlagaRequest $request
+     * @param  \App\Planta  $planta
      * @return \Illuminate\Http\Response
      */
     public function storePlaga(PlantaAddPlagaRequest $request, Planta $planta)
     {
-        //////////////////////////////////////////
-        //TODO: guardar 'descripcio' si n'hi ha
-        //      attach($roleId, ['expires' => $expires]);
-        //////////////////////////////////////////
         $planta->plagues()->attach($request['plaga'], ['descripcio' => $request['descripcio']]); 
+        return redirect('/plantes/' . $planta->id);
+    }
+
+    /**
+     * Update relation between plaga and planta
+     *
+     * @param  |App\Http\Requests\PlantaAddPlagaRequest $request
+     * @param  \App\Planta  $planta
+     * @return \Illuminate\Http\Response
+     */
+    public function updatePlaga(PlantaAddPlagaRequest $request, Planta $planta)
+    {
+        $planta->plagues()->updateExistingPivot($request['plaga'], ['descripcio' => $request['descripcio']]); 
         return redirect('/plantes/' . $planta->id);
     }
 }

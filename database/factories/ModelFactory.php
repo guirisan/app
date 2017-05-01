@@ -33,9 +33,17 @@ $factory->define(App\Planta::class, function(Faker\Generator $faker){
         'sembra' => $faker->text,
         'cultiu' => $faker->text,
         'collita' => $faker->text,
-        'grup_id' => $faker->numberBetween(1,4),
-        'familia_id' => $faker->numberBetween(1,4),
-        'user_id' => 1,
+        'grup_id' => function(){
+            return factory('App\Grup')->create()->id;
+        },
+        'familia_id' => function(){
+            return factory('App\Familia')->create()->id;
+        },
+        'user_id' => function(){
+            return factory('App\User')->create()->id;
+        },
+
+
     ];
 });
 
