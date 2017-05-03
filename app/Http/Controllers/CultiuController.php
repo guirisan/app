@@ -45,14 +45,14 @@ class CultiuController extends Controller
      */
     public function store(CultiuRequest $request)
     {
-        $cultiu = Cultiu::create(request([
-            'user_id', //agafar d'altre puesto
-            'parcela_id',
-            'planta_id',
-            'data_ini',
-            'data_fi',
-            'descripcio',
-        ]));
+        $cultiu = Cultiu::create([
+            'user_id' => auth()->id(),
+            'parcela_id' => $request['parcela_id'],
+            'planta_id' => $request['planta_id'],
+            'data_ini' => $request['data_ini'],
+            'data_fi' => $request['data_fi'],
+            'descripcio' => $request['descripcio'],
+        ]);
         //$cultiu->user_id = auth()->user()->id;
 
         return redirect('/cultius');

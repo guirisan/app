@@ -1,0 +1,221 @@
+Descripció general de l'aplicació
+
+
+Especificació de requisits:
+Planta-----------------
+[
+nom
+nom_cientific
+sembra_ini
+sembra_fi
+marc_ample
+marc_llarg
+dies
+sembra
+cultiu
+collita
+descripcio
+dies
+*grup
+*familia
+*plagues
+*images
+*tasques
+*cultius
+]
+    - indexPlanta
+        /**
+         * Mostra una taula de plantes amb les columnes nom, grup, familia, update i drop. Permet accedir a cadascuna de les plantes
+         */
+        //user given
+        //with one planta
+        //see planta when /plantes/
+    - createPlanta
+        /**
+         * Mostra el formulari per a crear una planta.
+         */
+
+    - readPlanta
+        /**
+         * Mostra els detalls de la planta i mostra plagues, tasques, images. Permet CRUD sobre cadascuna d'elles.
+         */
+    - updatePlanta
+        /**
+         * Mostra el formulari per a editar els camps de la planta i grup i familia, per ser relacio 1-1
+         */
+    - destroyPlanta
+        /**
+         * 
+         */
+    
+    - createPlaga
+    - readPlaga
+    - updatePlaga
+    - destroyPlaga
+    
+    - createTasca
+    - readTasca
+    - updateTasca
+    - destroyTasca
+    
+    - createImage
+    - readImage
+    - updateImage
+    - destroyImage
+
+Plaga-----------------
+[
+nom
+nom_cientific
+descripcio
+tractament
+*images
+*plantes
+*remeis
+]
+    - indexPlaga
+    - createPlaga
+    - readPlaga
+    - updatePlaga
+    - destroyPlaga
+    
+    - createPlanta
+    - readPlanta
+    - updatePlanta
+    - destroyPlanta
+
+    - createRemei
+    - readRemei
+    - updateRemei
+    - destroyRemei
+
+    - createImage
+    - readImage
+    - updateImage
+    - destroyImage
+
+
+Remei-----------------
+[
+nom
+nom_cientific
+descripcio
+aplicacio
+*plagues
+*tasques
+]
+    - indexRemei
+    - createRemei
+    - readRemei
+    - updateRemei
+    - destroyRemei
+
+    - createPlaga
+    - readPlaga
+    - updatePlaga
+    - destroyPlaga
+    
+    - createTasca
+    - readTasca
+    - updateTasca
+    - destroyTasca
+
+    - createImage
+    - readImage
+    - updateImage
+    - destroyImage
+
+
+Grup-----------------
+[
+nom
+nom_altres
+descripcio
+]
+    - indexGrup
+    - createGrup
+    - readGrup
+    - updateGrup
+    - destroyGrup
+
+Familia-----------------
+[
+nom
+nom_altres
+descripcio
+]
+    - indexFamilia
+    - createFamilia
+    - readFamilia
+    - updateFamilia
+    - destroyFamilia
+
+Bancal-----------------
+[
+nom
+superficie
+descripcio
+]
+    - indexBancal
+    - createBancal
+    - readBancal
+    - updateBancal
+    - destroyBancal
+
+    - createImage
+    - readImage
+    - updateImage
+    - destroyImage
+
+Parcela-----------------
+[
+nom
+superficie
+descripcio
+ocupada
+*bancal
+
+]
+    - indexParcela
+    - createParcela
+    - readParcela
+    - updateParcela
+    - destroyParcela
+
+    - createImage
+    - readImage
+    - updateImage
+    - destroyImage
+
+Cultiu-----------------
+[
+data_ini
+data_fi
+descripcio
+*planta
+*parcela
+]
+    - indexCultiu
+    - createCultiu
+    - readCultiu
+    - updateCultiu
+    - destroyCultiu
+
+    - createImage
+    - readImage
+    - updateImage
+    - destroyImage
+
+Event-----------------
+[
+nom
+data
+fet
+descripcio
+*parcela
+]
+    - indexEvent
+    - createEvent
+    - readEvent
+    - updateEvent
+    - destroyEvent

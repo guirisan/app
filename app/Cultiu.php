@@ -12,6 +12,13 @@ class Cultiu extends Model
      */
     protected $table = 'cultius';
 
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'data_ini',
+        'data_fi'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

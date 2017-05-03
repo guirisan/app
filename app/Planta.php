@@ -13,6 +13,13 @@ class Planta extends Model
      */
     protected $table = 'plantes';
 
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'sembra_ini',
+        'sembra_fi'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

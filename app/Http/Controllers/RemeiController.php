@@ -9,6 +9,14 @@ use Illuminate\Http\Request;
 class RemeiController extends Controller
 {
     /**
+     * Requires user to be autenticated to call this controller.
+     */    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

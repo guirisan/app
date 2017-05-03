@@ -11,6 +11,11 @@ class Event extends Model
      * @var string
      */
     protected $table = 'events';
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'data'
+    ];
 
     public function user()
     {
